@@ -1,4 +1,57 @@
 #include "BinarySearch.hpp"
+#include <sys/time.h>
+
+std::string get_current_time()
+{
+  timeval curTime;
+  gettimeofday(&curTime, NULL);
+  int milli = curTime.tv_usec / 1000;
+  
+  char buffer [80];
+  strftime(buffer, 80, "%Y-%m-%d %H:%M:%S", localtime(&curTime.tv_sec));
+  char currentTime[84] = "";
+  sprintf(currentTime, "%s:%d", buffer, milli);
+
+  return std::string(currentTime);
+}
+
+void BinarySearchTest()
+{
+  BinarySearch bst;
+
+  std::cout << "32M Test" << std::endl ;
+  std::cout << "BST::Insert starting (" << get_current_time() << ")" << std::endl ;
+  srand(time(NULL));
+  for(uint64_t i = 0; i < 32000000 ; i++ )
+  {
+    int random_number = std::rand();
+    bst.Insert(random_number);
+  }
+  bst.Insert(2118671862);
+
+
+  std::cout << "BST::Search starting (" << get_current_time() << ")" << std::endl ;
+  std::cout << "Does it exist? =" << bst.Search(2118671862)<< std::endl;;
+  std::cout << "BST::Search ending (" << get_current_time() << ")" << std::endl ;
+
+
+  std::cout << "32K Test" << std::endl ;
+  std::cout << "BST::Insert starting (" << get_current_time() << ")" << std::endl ;
+  srand(time(NULL));
+  for(uint64_t i = 0; i < 32000 ; i++ )
+  {
+    int random_number = std::rand();
+    bst.Insert(random_number);
+  }
+  bst.Insert(90);
+  //std::cout << "BST::PreOrder starting (" << get_current_time() << ")" << std::endl ;
+  //bst.PrintPreOrder();
+  std::cout << "BST::Search starting (" << get_current_time() << ")" << std::endl ;
+  std::cout << "Does it exist? =" << bst.Search(90)<< std::endl;;
+  std::cout << "BST::Search ending (" << get_current_time() << ")" << std::endl ;
+
+}
+
 
 BinarySearch::node* BinarySearch::Search(const Data key, node* n)
 {

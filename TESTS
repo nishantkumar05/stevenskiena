@@ -1,0 +1,17 @@
+MACHINE:
+-----------------------
+MacBook Pro (Retina, 15-inch, Late 2013
+Processor 2.6 GHz Intel Core i7
+Memory 16 GB 1600 MHz DDR3
+Graphics NVIDIA GeForce GT 750M 2048 MB
+
+TESTS
+-----------------------
+32M = how long does it take to test on 32 million sample size
+32K = how long does it take to test on 32 thousand sample size
+
+time mentioned in the report following is retrieved from time utility and its 'user time' (not real or sys time).
+
+            Insert        Search
+BST 32M     52 sec        milli secs
+BST 32K     .19 sec       milli secs

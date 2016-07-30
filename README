@@ -4,23 +4,27 @@ ALGORITHMS STEVEN SKIENA
 You want to know these things about algorithms:
 - What problem does algorithm solves? 
 - And how efficiently? Best, average and worst case time complexities?
-- Use cases. Which algorithm best in which case
+- Use cases of algorithm. Which algorithm best in which case
 
 
-MACHINE:
------------------------
-MacBook Pro (Retina, 15-inch, Late 2013
-Processor 2.6 GHz Intel Core i7
-Memory 16 GB 1600 MHz DDR3
-Graphics NVIDIA GeForce GT 750M 2048 MB
+Chapter 2
+------------------------
 
-TESTS
------------------------
-32M = how long does it take to test on 32 million sample size
-32K = how long does it take to test on 32 thousand sample size
+A- Factors influencing algorithm choice
+   Complexity
+   - Runtime complexity (Big-O notation)
+   - Space complexity
+     = In-place
+     = Algos with locality of reference in L1 or L2 cache
 
-time mentioned in the report following is retrieved from time utility and its 'user time' (not real or sys time).
+   Input data
+   - Data size
+   - Data structure in which data is stored
+   - data distribution (Insertion sort is better than selection if data is already sorted)
 
-            Insert        Search
-BST 32M     52 sec        milli secs
-BST 32K     .19 sec       milli secs
+
+B- Stable sort?
+   Any sorting algorithm that doesn't change input data if it considers two items as equal.
+   
+   Sort (2,blue) , (3,red) , (4,red), (9,green), (1,red) by colors in red > blue > green order. 
+   Stable sort in this case will make syre that items (3,red) and (4,red) doesnt change in final output

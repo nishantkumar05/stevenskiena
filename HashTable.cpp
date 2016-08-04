@@ -21,10 +21,6 @@ using Buffer = std::vector<std::string>;
 
 //Candidate for template
 //different key types
-//empty key
-//removal in case of collision
-//size of the array
-//Address of a class
 class HashTable
 {
   struct Entry

@@ -7,8 +7,20 @@ You want to know these things about algorithms:
 - Use cases of algorithm. Which algorithm best in which case
 
 
-Chapter 2
-------------------------
+Chapter 1: Correctness and efficiency
+-------------------------------------
+Decreasing order of efficiency
+
+O(1)
+O(log n)
+O(n) = polynomial time 
+O(n log n)
+O(n^2) = polynomial time
+O(2^n) = exponential time
+O(n!) = probability
+
+Chapter 2: Data structure and sorting
+-------------------------------------
 
 A- Factors influencing algorithm choice
    Complexity
@@ -28,3 +40,19 @@ B- Stable sort?
    
    Sort (2,blue) , (3,red) , (4,red), (9,green), (1,red) by colors in red > blue > green order. 
    Stable sort in this case will make syre that items (3,red) and (4,red) doesnt change in final output
+
+
+C- Hash tables
+   - Hash function = fun that maps input of some size to some relatively smaller fixed size value.
+   - Hash function properties:
+       - Deterministic - always works for any input size in polynomial time 
+       - Continuity 
+       - Output length
+       - Uniformity
+       - Non-collision (checksum) - 2 diff i/p cann't generate same hash else checksum is false +ve
+       - non-reversible hash (cryptographics)
+   - Hash uses: Cryptographic hash, checksum 
+   - To limit hash to some limit divide it by some prime
+ 
+   
+   

@@ -1,0 +1,10 @@
+
+
+- HOW TO PARSE C/C++ SYNTAX
+  - CLOCKWISE/SPIRAL RULE - http://c-faq.com/decl/spiral.anderson.html
+  - move clockwise and stop at either '[' or '(' or ';'. When ';' is encountered your continue looping around it until we finish encountering leftmost declaration syntax
+  - Replace following with english sentences 
+    - [X] or [] = array of size X of or array of undefined size of ...
+    - ( = function accepting ...
+    - * = pointer to ...
+

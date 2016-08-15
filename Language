@@ -8,3 +8,32 @@
     - ( = function accepting ...
     - * = pointer to ...
 
+- OPERATORS
+  - sizeof(a) = 8 (not 2) where, int a[] = {3,4}; , because sizeof is size of object's repersentation
+  - sizeof always use parenthesis around sizeof to be safe becaues sizeof 3/sizeof int; fails because its ambiguous -> its sizeof (3/sizeof(int) or sizeof(3)/sizeof(int)?
+
+
+- QUALIFIERS
+  A- Types of qualifiers
+     - Storage = static, extern, thread_local, global
+     - Type = cv-qualifiers (const and volatile), mutable (const function can still modify values internally)
+
+  B- volatile do-away with optimizations because every access (read, write, member function call) of volatile object (e.g volatile std::string s;) is 'treated' as changing state of object
+
+- INITIALIZATION (c++11)
+  http://en.cppreference.com/w/cpp/language/initialization
+  A- Syntaxically 3 types of initilization: (expr), =expr or {expr}
+  B- Types of initialization (based on syntax):
+     -> zero-initialization = global, static variables have zero by default
+     -> Empty-value-initialization = std::string s{}/s() initialized with empty values
+     -> Temporary-copy-initialization = std::String s = "hello"; (almost always optmized by compiler)
+     -> List-initialization = std::string s = {'a', 'b', 'c'};
+     -> Aggregate-initialization = array or class/struct/union initialzed with braces. T a = {b1, b2, b3}; where T is class that looks like struct
+  C- curly-brace-init was introduced in c++11 standard
+
+  D- copy-elision = prolific compiler optimization to avoid creating temporary object and then copy-constructor call
+
+- FUNCTIONS
+  - Passing array to function by reference?
+      foo(int a[]) == foo(int (&a)[]) , because arrays are always passed by reference in c/c++
+

@@ -13,6 +13,7 @@ Semantic:
    HeapSort.cpp:132:18: error: 'Heap' is not a class, namespace, or scoped enumeration
    Heap<int> h(a, Heap::HeapType::minHeap);
                  ^
+- Call to SiftDown(end-1)
 
 - Heapify logic totally incorrect 
 */
@@ -47,7 +48,6 @@ public:
 
   Heap(const std::vector<T> &b, HeapType t = HeapType::maxHeap) : a(b), type(t)
   {
-    Heapify();
   }
 
 
@@ -62,14 +62,31 @@ public:
   //Add printer job with priority p in spool
   void Push(T b)
   {
-    a.push(a);
+    a.push_back(a);
     Heapify();
   }
 
 
+  void PoorSort()
+  {
+    //O(n^2), not-in-place sort. 
+    std::vector<T> b;
+    for( T i : a) {
+      b.push_back(Pop());
+      Heapify();
+    }
+    a = b;
+  }
+
   void Sort()
   {
     Heapify();
+    std::cout<< "Heapified()\n";
+    p();
+    for(int end = a.size()-1 ; end > 0; end--) {
+      swap(a[0], a[end]);
+      SiftDown(end-1);
+    }
   }
 
   void p()
@@ -78,34 +95,63 @@ public:
   }
   
   
-private:
-  //Floyd heapify method
   void Heapify()
   {
-    for(unsigned int i = 0; ((2*i)+1) < a.size(); i++) {
-      unsigned int leftChild = ((2*i)+1); //see notes
-      int *x = &a[leftChild];
-      if(leftChild < a.size()-1) { //only one child?
-        x = Compare(a[leftChild], a[leftChild+1]) ? &a[leftChild] : &a[leftChild+1];
+    //Continue unless there are no children to compare
+		for(int i = 0; ((2*i)+1) < a.size(); i++) {
+			uint leftChild = ((2*i)+1); //see notes
+			int *x = &a[leftChild];
+			if(leftChild < a.size()-1) { //only one child?
+				x = Compare(a[leftChild], a[leftChild+1]) ? &a[leftChild] : &a[leftChild+1];
+			}
+			if(Compare(*x, a[i])) {
+				swap(*x, a[i]);
+				//Bubble-up from here
+				for(uint j = i; j != 0;  ) {
+					uint root = (j <= 2) ? 0 : (j-1)/2;
+					if(Compare(a[j], a[root])){
+						swap(a[j], a[root]);
+					}
+					if(root == 0) {
+						break;
+					} else {
+						j = root;
+					}
+				}
+				i--;//After bubble-up you must start from same element again
+			}
+		}
+	}
+
+
+
+private:
+  void SiftDown(int end)
+  {
+    for(int i = 0; ((2*i)+1) <= end; ) {
+      uint root = i;
+      uint leftChild = (2*i)+1;
+      uint rightChild = (2*i)+2;
+      uint largest = root;
+
+      if((leftChild <= end) && (a[largest] < a[leftChild])) {
+        largest = leftChild;
       }
-      if(Compare(*x, a[i])) {
-        swap(*x, a[i]);
-        //Bubble-up from here
-        for(unsigned int j = i; j != 0;  ) {
-          unsigned int root = (j <= 2) ? 0 : (j-1)/2;
-          if(Compare(a[j], a[root])){
-            swap(a[j], a[root]);
-          }
-          if(root == 0) {
-            break;
-          } else {
-            j = root;
-          }
-        }
-        i--;//After bubble-up you must start from same element again
+
+      if((rightChild <= end) && (a[largest] < a[rightChild])) {
+        largest = rightChild;
+      }
+
+      if(largest != i) {
+        swap(a[root], a[largest]);
+        i = largest;
+      }else {
+        break;
       }
     }
   }
+
+
 
   bool Compare(T a, T b)
   {
@@ -132,15 +178,12 @@ private:
 int main(void)
 {
   std::vector<int> a =  {30, 50, 22, 4, 2, 3, 19, 45, 88, 66, 36, 39, 64, 87, 63, 32, 14, 43, 89, 34, 99, 23};
-  //std::vector<int> a =   {30, 50, 22, 4, 2, 3, 19, 45, 88, 66, 36, 39, 64, 87, 63, 32, 14, 43, 89, 34, 99};
-  //subscript { 0,  1,  2, 3, 4, 5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
   Print(a);
-  Heap<int> h(a, Heap<int>::HeapType::minHeap);
 
-  std::cout<< "Heapified()\n";
-  h.p();
+  //Heap<int> h(a, Heap<int>::HeapType::minHeap); //create min heap
+  Heap<int> h(a); //create max heap
 
-  h.Pop();
-  std::cout << "Pop()\n";
+  h.Sort();
+  std::cout << "Sorted\n";
   h.p();
 }

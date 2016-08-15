@@ -1,5 +1,7 @@
 #pragma once
 
+using uint = unsigned int;
+
 inline void Print(int a[], size_t as)
 {
   std::cout << "array=> ";

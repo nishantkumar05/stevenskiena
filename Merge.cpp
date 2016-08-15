@@ -1,5 +1,11 @@
 #include <iostream>
 
+// Took whopping ~6 hours to write from scratch.
+//Semantic:
+// - logic as usual wrong
+//syntax - none!
+
+
 void print(int a[], size_t s)
 {
   std::cout << "array("<<s << ")=";
@@ -37,6 +43,8 @@ void merge(int a[], size_t start, size_t mid, size_t end)
 
 void sort(int a[], size_t start, size_t end)
 {
+  //use parameters directly to find out recursion ending.
+  //Do not use derived parameters
   if(start == end) {
     return;
   }

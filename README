@@ -53,6 +53,5 @@ C- Hash tables
        - non-reversible hash (cryptographics)
    - Hash uses: Cryptographic hash, checksum 
    - To limit hash to some limit divide it by some prime
- 
-   
-   
+
+

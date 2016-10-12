@@ -8,6 +8,11 @@
     - ( = function accepting ...
     - * = pointer to ...
 
+- RVALUES AND LVALUES
+  - http://stackoverflow.com/questions/2145030/are-all-temporaries-rvalues-in-c
+    rvalue or lvalue is property of expression not an object!
+
+
 - OPERATORS
   - sizeof(a) = 8 (not 2) where, int a[] = {3,4}; , because sizeof is size of object's repersentation
   - sizeof always use parenthesis around sizeof to be safe becaues sizeof 3/sizeof int; fails because its ambiguous -> its sizeof (3/sizeof(int) or sizeof(3)/sizeof(int)?
@@ -33,7 +38,21 @@
 
   D- copy-elision = prolific compiler optimization to avoid creating temporary object and then copy-constructor call
 
+  E- int&& t = 10 + 4;
+
 - FUNCTIONS
+
+- ARRAYS AND POINTERS:
+  - Decay of array to pointer
+    int a[10];
+    int *p = a; //array a decay into pointer to first element i.e. &a[0]
+  - Variable declaration VS variable usage:
+     - Size of array must be know during declaration i.e. a[][] ={{2,2},{2,2}}; fails unless a[][2]
+     - You can use pointers and arrays interchangeably during usage but not in declaration
+  - only similarity between pointer and arrays is pointer arithmetic and array subscript address calculation.
+  - Difference between pointer and arrays is that (char *p = "a string" vs char a[] = "array string") storage location
+  - 2D array
+    Passing 2D array require size of column because decay of array into pointers doesnt happen recursively only for first entry.
+    And you need array size to calculate innermost elements
   - Passing array to function by reference?
       foo(int a[]) == foo(int (&a)[]) , because arrays are always passed by reference in c/c++
-

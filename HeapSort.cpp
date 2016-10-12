@@ -98,7 +98,7 @@ public:
   void Heapify()
   {
     //Continue unless there are no children to compare
-		for(int i = 0; ((2*i)+1) < a.size(); i++) {
+    for(int i = 0; ((2*i)+1) < a.size(); i++) {
 			uint leftChild = ((2*i)+1); //see notes
 			int *x = &a[leftChild];
 			if(leftChild < a.size()-1) { //only one child?

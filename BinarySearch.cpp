@@ -29,7 +29,6 @@ void BinarySearchTest()
   }
   bst.Insert(2118671862);
 
-
   std::cout << "BST::Search starting (" << get_current_time() << ")" << std::endl ;
   std::cout << "Does it exist? =" << bst.Search(2118671862)<< std::endl;;
   std::cout << "BST::Search ending (" << get_current_time() << ")" << std::endl ;
@@ -49,7 +48,6 @@ void BinarySearchTest()
   std::cout << "BST::Search starting (" << get_current_time() << ")" << std::endl ;
   std::cout << "Does it exist? =" << bst.Search(90)<< std::endl;;
   std::cout << "BST::Search ending (" << get_current_time() << ")" << std::endl ;
-
 }
 
 

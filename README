@@ -55,3 +55,10 @@ C- Hash tables
    - To limit hash to some limit divide it by some prime
 
 
+Chapter 3: Breaking problems down (Dynamic Programming)
+-------------------------------------------------------
+A) Dynamic program applied to problems which
+   - Tries to minimize or maximize 'something'
+   - support principle of optimiality: i.e. removing an element doesnt alter state of the problem
+   - Seems like NP-complete problem
+   - NP-completeness is bound by some condition

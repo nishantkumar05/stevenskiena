@@ -8,14 +8,34 @@
     - ( = function accepting ...
     - * = pointer to ...
 
+- EXCEPTION SAFETY
+  -Is provided by a method of a class. e.g. std::Vector::reserve throws exception if length is greater than max.
+  -"exception safety" are gaurantees provided by class method about the state of object in case of exception is thrown
+    -> No throw - no exception thrown at all
+    -> Strong exception gaurantee - object will remain pristine as before after the exception is thrown 
+    -> Basic exception gaurantee - object will be usable with "no leaks" but value might have changed
+
 - RVALUES AND LVALUES
   - http://stackoverflow.com/questions/2145030/are-all-temporaries-rvalues-in-c
-    rvalue or lvalue is property of expression not an object!
+    -> rvalue or lvalue is property of expression not an object!!! e.g int a = b * c; (b * c = rvalue)
+    -> you cannot take address of rvalue object
+    -> X& = lvalue reference and X&& = rvalue reference
+
+  - Rvalue reference? "type&&" is called rvalue reference 
+  - What problems does Rvalue solve?   "perfect forwarding" and "implementing move"
+????What is forwarding ? What is move semantics
+   http://stackoverflow.com/questions/3106110/what-are-move-semantics
+
+- Safe-Bool idiom
+
+???- Copy-Swap idiom http://stackoverflow.com/questions/3279543/what-is-the-copy-and-swap-idiom
+
 
 
 - OPERATORS
   - sizeof(a) = 8 (not 2) where, int a[] = {3,4}; , because sizeof is size of object's repersentation
   - sizeof always use parenthesis around sizeof to be safe becaues sizeof 3/sizeof int; fails because its ambiguous -> its sizeof (3/sizeof(int) or sizeof(3)/sizeof(int)?
+  -CONVERSION OPERATOR? conversion operator converts a class to another type
 
 
 - QUALIFIERS
@@ -56,3 +76,10 @@
     And you need array size to calculate innermost elements
   - Passing array to function by reference?
       foo(int a[]) == foo(int (&a)[]) , because arrays are always passed by reference in c/c++
+
+
+================
+//Conversion operators (how to define, what is return value?); difference from operator overloading
+//Safe-bool idiom. What is idiom (native c++ idiom)
+//Emplace why use emplace?
+

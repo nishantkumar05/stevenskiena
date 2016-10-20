@@ -7,17 +7,25 @@ You want to know these things about algorithms:
 - Use cases of algorithm. Which algorithm best in which case
 
 
+How to solve problem?
+- What data structure to use? What would make it efficient?
+- Know algorithm basics (practice coding to get better as the cliche goes)
+- Make sure algorithms can be jotted down in 45 mins plain (?)
+
+
+
+
 Chapter 1: Correctness and efficiency
 -------------------------------------
 Decreasing order of efficiency
 
-O(1)
-O(log n)
-O(n) = polynomial time 
-O(n log n)
+O(1) = constant time
+O(log n) = logarithmic time
+O(n) = linear time (polynomial with k = 1)
+O(n log n) = linearithmic 
 O(n^2) = polynomial time
 O(2^n) = exponential time
-O(n!) = probability
+O(n!) = combination
 
 Chapter 2: Data structure and sorting
 -------------------------------------
@@ -54,6 +62,13 @@ C- Hash tables
    - Hash uses: Cryptographic hash, checksum 
    - To limit hash to some limit divide it by some prime
 
+Chapter 4: Graph
+-----------------
+
+A- Why does BFS give us shortest path between root (starting node of bfs traversal) and x?
+   - because at every step of bfs traversal we store shortest path in parents[] array (if x discovers y then
+     parent[y] = x). Its shortest because in bfs we visit all siblings to x first before moving forward so y has
+     smallest distance between itself and x.
 
 Chapter 3: Breaking problems down (Dynamic Programming)
 -------------------------------------------------------
